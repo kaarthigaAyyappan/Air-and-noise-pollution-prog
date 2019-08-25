@@ -1,0 +1,10 @@
+b=Book1
+air=b$AIR
+noise=b$NOISE
+y=b$CLASS
+library(rpart)
+library(rpart.plot)
+model=rpart(y~air+noise,method=&#39;class&#39;,control=rpart.control(minsplit=2))
+plotcp(model)
+model=prune(model,cp=0.13)
+rpart.plot(model)
