@@ -1,0 +1,44 @@
+int soundPin = A0;
+int airPin = A1;
+int soundValue = 0;
+int airValue = 0;
+void setup() {
+// put your setup code here, to run once:
+pinMode (soundPin, INPUT);
+pinMode( airPin, INPUT);
+Serial.begin(9600);
+}
+
+void loop() {
+// put your main code here, to run repeatedly:
+airValue = analogRead(airPin);
+delay(100);
+soundValue= analogRead(soundPin);
+if(airValue&gt;400 &amp;&amp; soundValue&gt;330)
+{
+Serial.println(&quot;High&quot;);
+Serial.println(&quot;Air:&quot;);
+
+Serial.println(airValue);
+Serial.println(&quot;Sound:&quot;);
+Serial.println(soundValue);
+}
+else if(soundValue&gt;330){
+Serial.println(&quot;High&quot;);
+Serial.println(&quot;Sound:&quot;);
+Serial.println(soundValue);
+}
+else if(airValue&gt;400){
+Serial.println(&quot;High&quot;);
+Serial.println(&quot;Air:&quot;);
+Serial.println(airValue);
+}
+else{
+Serial.println(&quot;Low&quot;);
+Serial.println(&quot;Air:&quot;);
+Serial.println(airValue);
+Serial.println(&quot;Sound:&quot;);
+Serial.println(soundValue);
+}
+delay(100);
+}
